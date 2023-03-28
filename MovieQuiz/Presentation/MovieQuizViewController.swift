@@ -148,7 +148,7 @@ final class MovieQuizViewController: UIViewController {
     
     
     
-    func show(quiz result: QuizResultsViewModel) {  // показываем результат прохождения квиза
+    private func show(quiz result: QuizResultsViewModel) {  // показываем результат прохождения квиза
         let alert = UIAlertController(
             title: result.title,
             message: result.text,
