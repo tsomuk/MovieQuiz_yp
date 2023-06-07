@@ -10,8 +10,8 @@ import Foundation
 
 struct BestGame : Codable {
     let correct : Int
-    let total: Int
-    let date : Date
+    let total   : Int
+    let date    : Date
     
 }
 
@@ -22,17 +22,10 @@ extension BestGame: Comparable {
             return 0
         }
         return Double(correct)/Double(total)
-        
-        
     }
+    
     static func < (lhs: BestGame, rhs: BestGame) -> Bool {
         lhs.accuracy < rhs.accuracy
-        
-        
-        
+ 
     }
-    
-    
-    
-    
 }

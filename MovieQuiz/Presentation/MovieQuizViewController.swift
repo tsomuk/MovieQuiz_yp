@@ -38,7 +38,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     }
     
     // MARK: - QuestionFactoryDelegate
-   
+    
     func didReceiveNextQuestion(question: QuizQuestion?) {
         guard let question = question else { return }
         
@@ -75,14 +75,12 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
             questionNumber: "\(currentQuestionIndex + 1)/\(questionsAmount)")
     }
     
-    
     private func show(quiz step: QuizStepViewModel) {
         imageView.image = step.image
         counterLabel.text = step.questionNumber
         textLabel.text = step.question
         imageView.layer.cornerRadius = 20
     }
-    
     
     private func showAnswerResult(isCorrect: Bool) {
         if isCorrect {
@@ -93,7 +91,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         imageView.layer.borderColor = isCorrect ? UIColor.ypGreen.cgColor : UIColor.ypRed.cgColor
         yesButton.isEnabled = false
         noButton.isEnabled = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             guard let self = self else { return }
             self.imageView.layer.borderColor = UIColor.clear.cgColor
             self.showNextQuestionOrResults()
@@ -103,13 +101,13 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     }
     
     private func show(quiz result: QuizResultsViewModel) {
-
+        
     }
     
     private func showNextQuestionOrResults() {
         if currentQuestionIndex == questionsAmount - 1 {
             showFinalResults()
-      } else {
+        } else {
             currentQuestionIndex += 1
             questionFactory?.requestNextQuestion()
         }
@@ -117,11 +115,9 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     
     private func showFinalResults() {
         statisticService?.store(correct: correctAnswers, total: questionsAmount )
-
-        
         
         let alertModel = AlertModel(
-            title: "Этот раунд окончен"!",
+            title: "Этот раунд окончен!",
             message: makeResultMessange(),
             buttonText: "Сыграть еще раз",
             buttonAction: { [weak self] in
@@ -130,14 +126,13 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
                 self?.questionFactory?.requestNextQuestion()
             }
         )
-
+        
         alertPresenter?.show(alertModel: alertModel)
         
-        
     }
-                             
+    
     private func makeResultMessange() -> String {
-          
+        
         guard let statisticService = statisticService, let bestGame = statisticService.bestGame else {
             assertionFailure("error messange")
             return ""
@@ -151,21 +146,10 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         
         
         let resultMessange = [
-        currentGameResultLine, totalPlaysCountLine, bestGameInfoLine, averageAccurancyLine
+            currentGameResultLine, totalPlaysCountLine, bestGameInfoLine, averageAccurancyLine
         ].joined(separator: "\n")
         
         return resultMessange
         
-        }
+    }
 }
-
-
-
-//let text = correctAnswers == questionsAmount ?
-//            "Поздравляем, Вы ответили на 10 из 10!" :
-//            "Вы ответили на \(correctAnswers) из 10, попробуйте ещё раз!"
-//let viewModel = QuizResultsViewModel(
-//    title: "Этот раунд окончен!",
-//    text: text,
-//    buttonText: "Сыграть ещё раз")
-//show(quiz: viewModel)

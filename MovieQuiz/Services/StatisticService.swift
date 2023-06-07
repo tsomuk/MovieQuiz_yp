@@ -12,7 +12,7 @@ protocol StatisticService {
     var totalAccurancy : Double {get}
     var gamesCount     : Int {get}
     var bestGame       : BestGame? {get}
-
+    
     func store(correct: Int, total: Int)
     
 }
@@ -80,7 +80,6 @@ extension StatisticServiceImpl : StatisticService {
             guard
                 let data = userDefaults.data(forKey: Keys.bestGame.rawValue),
                 let bestGame = try? decoder.decode(BestGame.self, from: data) else {
-//                assertionFailure("error message")
                 return nil
             }
             return bestGame
@@ -93,9 +92,7 @@ extension StatisticServiceImpl : StatisticService {
     
     var totalAccurancy: Double {
         Double(correct) / Double(total) * 100
-        
     }
-    
     
     func store(correct: Int, total: Int) {
         self.correct += correct

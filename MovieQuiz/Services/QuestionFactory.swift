@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 final class QuestionFactory : QuestionFactoryProtocol {
     
     weak var delegate: QuestionFactoryDelegate?
@@ -25,9 +23,6 @@ final class QuestionFactory : QuestionFactoryProtocol {
         let question = questions[safe: index]
         delegate?.didReceiveNextQuestion(question: question)
     }
-    
-    
-    
     
     private let questions : [QuizQuestion] = [
         QuizQuestion(
@@ -80,10 +75,4 @@ final class QuestionFactory : QuestionFactoryProtocol {
             text: "Рейтинг этого фильма больше чем 6?",
             correctAnswer: false)
     ]
-    
-   
-    
-    
-    
-    
 }
