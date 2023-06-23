@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_12" orientation="portrait" appearance="dark"/>
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
@@ -115,17 +115,27 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="2j5-Wh-wVM">
+                                <rect key="frame" x="174" y="403.66666666666669" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="LBW-nr-hKV"/>
+                                    <constraint firstAttribute="height" constant="45" id="diB-pm-Cax"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="ypBlack"/>
                         <constraints>
+                            <constraint firstItem="2j5-Wh-wVM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="58U-5r-mdE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eJM-wC-zdK" secondAttribute="bottom" id="Pqd-RL-k8Q"/>
                             <constraint firstItem="eJM-wC-zdK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="dDz-8Y-2SH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eJM-wC-zdK" secondAttribute="trailing" constant="20" id="erD-D8-vfs"/>
+                            <constraint firstItem="2j5-Wh-wVM" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="iBV-NF-jP4"/>
                             <constraint firstItem="eJM-wC-zdK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="jQ0-QV-r7R"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="2j5-Wh-wVM" id="tYI-IY-fYC"/>
                         <outlet property="counterLabel" destination="Cpr-hK-lYZ" id="1Qn-sU-zhj"/>
                         <outlet property="imageView" destination="VuW-Wx-YGa" id="9Kv-Dp-rEY"/>
                         <outlet property="noButton" destination="kD1-vv-KF0" id="eWv-3H-jE7"/>
