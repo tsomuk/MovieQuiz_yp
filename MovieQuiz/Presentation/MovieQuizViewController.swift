@@ -1,12 +1,7 @@
 import UIKit
 
 final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
-
-
-  
-    
-    
-    
+ 
     // MARK: - IBOutlets
     
     @IBOutlet private var imageView: UIImageView!
@@ -88,10 +83,6 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     
     private func hideLoadingIndicator() {
         activityIndicator.isHidden = true
-    }
-    
-    private func downloadInfo() -> Void {
-        
     }
     
     private func showNetworkError(message: String) {
