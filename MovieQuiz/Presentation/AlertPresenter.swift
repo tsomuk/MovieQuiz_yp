@@ -8,7 +8,7 @@
 import UIKit
 
 
-protocol AlertPresenter: AnyObject {
+protocol AlertPresenterProtocol: AnyObject {
     func show(alertModel: AlertModel)
 }
 
@@ -20,7 +20,7 @@ final class AlertPresenterImpl {
     }
 }
 
-extension AlertPresenterImpl : AlertPresenter {
+extension AlertPresenterImpl : AlertPresenterProtocol {
     func show(alertModel: AlertModel) {
         let alert = UIAlertController(
             title: alertModel.title,
