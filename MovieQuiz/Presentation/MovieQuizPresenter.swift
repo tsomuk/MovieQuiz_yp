@@ -115,7 +115,7 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
         let alertModel = AlertModel(
             title: "Этот раунд окончен!",
             message: quizResultText(),
-            buttonText: "Сыграть еще раз!",
+            buttonText: "Сыграть еще раз",
             buttonAction: { [weak self] in guard let self else { return }
                 self.restartGame()
             })
