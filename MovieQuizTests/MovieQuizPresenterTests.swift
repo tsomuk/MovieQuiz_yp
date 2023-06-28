@@ -1,0 +1,33 @@
+//
+//  MovieQuizPresenterTests.swift
+//  MovieQuizTests
+//
+//  Created by Nikita Tsomuk on 25.06.2023.
+//
+//
+import XCTest
+@testable import MovieQuiz
+
+final class MovieQuizViewControllerMock: MovieQuizViewControllerProtocol {
+    func show(quiz step: QuizStepViewModel) { }
+    func showNetworkError(message: String) { }
+    func showFinalResults() { }
+    func highlightImageBorder(isCorrectAnswer: Bool) { }
+    func yesAndNoButtonsActivation(nowItIs: Bool) { }
+    func showLoadingIndicator() { }
+    func hideLoadingIndicator() { }
+}
+
+final class MovieQuizPresenterTests: XCTestCase {
+
+    func testPresenterConvertModel() throws {
+        let viewControllerMock = MovieQuizViewControllerMock()
+        let sut = MovieQuizPresenter(viewController: viewControllerMock)
+        let emptyData = Data()
+        let question = QuizQuestion(image: emptyData, text: "Question Text", correctAnswer: true)
+        let viewModel = sut.convert(model: question)
+        XCTAssertNotNil(viewModel.image)
+        XCTAssertEqual(viewModel.question, "Question Text")
+        XCTAssertEqual(viewModel.questionNumber, "1/10")
+    }
+}

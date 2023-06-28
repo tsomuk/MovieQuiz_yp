@@ -9,7 +9,7 @@ import Foundation
 
 
 protocol StatisticService {
-    var totalAccurancy : Double {get}
+    var totalAccuracy : Double {get}
     var gamesCount     : Int {get}
     var bestGame       : BestGame? {get}
     
@@ -90,7 +90,7 @@ extension StatisticServiceImpl : StatisticService {
         }
     }
     
-    var totalAccurancy: Double {
+    var totalAccuracy: Double {
         Double(correct) / Double(total) * 100
     }
     
