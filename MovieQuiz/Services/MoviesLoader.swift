@@ -20,7 +20,7 @@ struct MoviesLoader : MoviesLoading {
     }
 
     private var mostPopularMoviesUrl: URL {
-        guard let url = URL(string: "https://imdb-api.com/en/API/MostPopularMovies/k_wdj3xwa3") else {
+        guard let url = URL(string: "https://imdb-api.com/en/API/Top250Movies/k_zcuw1ytf") else {
             preconditionFailure("Unable to construct mostPopularMoviesUrl")
         }
         return url
